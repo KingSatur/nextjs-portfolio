@@ -1,17 +1,21 @@
 import React from "react";
 import { Cursor, useTypewriter } from "react-simple-typewriter";
 import BackgroundCircles from "./BackgroundCircles";
-import { motion } from "framer-motion";
 import Link from "next/link";
+import { HeroData } from "../typings";
 
-type Props = {};
+type Props = {
+  heroData: HeroData;
+};
 
-const Hero = (props: Props) => {
+const Hero = ({ heroData }: Props) => {
   const [text, count] = useTypewriter({
-    words: ["Developer", "Designer"],
+    words: heroData?.words,
     loop: true,
-    delaySpeed: 200,
+    delaySpeed: 1000,
+    deleteSpeed: 100,
   });
+
   return (
     <div className="h-screen flex flex-col space-y-8 items-center justify-center text-center overflow-hidden">
       <BackgroundCircles />
@@ -26,7 +30,7 @@ const Hero = (props: Props) => {
         </h2>
         <h1 className="text-5xl lg:text-6xl font-semibold px-10">
           <span className="mr-3">{text}</span>
-          <Cursor cursorColor="red" />
+          <Cursor cursorColor="lightcyan" />
         </h1>
         <div className="pt-5">
           <Link href="#about">
