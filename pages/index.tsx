@@ -78,7 +78,7 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
     props: {
       heroData,
     },
-    revalidate: 10,
+    revalidate: 20,
   };
 };
 
