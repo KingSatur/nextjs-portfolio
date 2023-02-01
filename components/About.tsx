@@ -1,9 +1,13 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { AboutData } from "../typings";
+import { urlFor } from "../santiy";
 
-type Props = {};
+type Props = {
+  aboutData: AboutData;
+};
 
-function About({}: Props) {
+function About({ aboutData }: Props) {
   return (
     <motion.div
       initial={{
@@ -25,24 +29,14 @@ function About({}: Props) {
           opacity: 1,
           x: 0,
         }}
-        src="../public/photo_profile.jfif"
-        className="-mb-20 md:mb-0 flex-shrink-0 w-56 h-56 rounded-full object-cover md:rounded-lg md:w-64 md:h-95 xl:w-[500px] xl:h-[600px]"
+        src={String(urlFor(aboutData?.photo))}
+        className="-mb-20 md:mb-0 flex-shrink-0 w-56 h-56 rounded-full object-cover md:rounded-lg md:w-64 md:h-[300px] xl:w-[500px] xl:h-[600px]"
       ></motion.img>
       <div className="space-y-10 px-0 md:px-10">
-        <h4 className="text-4xl font-semibold">
-          Here is a{" "}
-          <span className="underline decoration-[#1D4ED8]">little</span>{" "}
-          background
+        <h4 className="text-4xl font-semibold text-blue-500">
+          My <span className="underline decoration-[white]">background</span>
         </h4>
-        <p className="text-sm">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi
-          consequuntur aliquid maxime exercitationem inventore debitis iste
-          itaque error eligendi neque! Voluptates, cumque optio. Dolores quidem
-          minima adipisci ea quo earum. Lorem ipsum dolor sit amet consectetur
-          adipisicing elit. Provident odit iure incidunt illo omnis
-          necessitatibus iusto porro at distinctio explicabo, illum culpa fugiat
-          vitae perferendis, veritatis velit quaerat deserunt. Soluta.
-        </p>
+        <p className="text-lg">{aboutData.background}</p>
       </div>
     </motion.div>
   );

@@ -1,10 +1,13 @@
 import { motion } from "framer-motion";
 import React from "react";
 import ExperienceCard from "./ExperienceCard";
+import { JobData } from "../typings";
 
-type Props = {};
+type Props = {
+  jobData: JobData[];
+};
 
-const WorkExperience = (props: Props) => {
+const WorkExperience = ({ jobData }: Props) => {
   return (
     <motion.div
       initial={{
@@ -14,19 +17,18 @@ const WorkExperience = (props: Props) => {
       transition={{ duration: 1.5 }}
       className="h-screen flex relative 
         overflow-hidden flex-col text-lft 
-        md:flex-row max-w-full px-10 justify-evenly mx-auto items-center"
+        max-w-full px-10 justify-evenly mx-auto items-center"
     >
-      <h3 className="absolute top-24 uppercase tracking-[20px] text-gray-500 text-2xl">
+      <h3 className="uppercase mt-6 tracking-[20px] text-gray-500 text-2xl">
         Experience
       </h3>
       <div
         className="w-full flex space-x-5 overflow-x-scroll p-10 snap-x snap-mandatory 
       scrollbar scrollbar-track-gray-400/20 scrollbar-thumb-[#1D4ED8]"
       >
-        <ExperienceCard />
-        <ExperienceCard />
-        <ExperienceCard />
-        <ExperienceCard />
+        {jobData?.map((jobData) => {
+          return <ExperienceCard job={jobData} />;
+        })}
       </div>
     </motion.div>
   );
