@@ -2,10 +2,13 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import React from "react";
 import { SocialIcon } from "react-social-icons";
+import { SocialData } from "../typings";
 
-type Props = {};
+type Props = {
+  socialData: SocialData[];
+};
 
-const Header = (props: Props) => {
+const Header = ({ socialData }: Props) => {
   return (
     <header className="sticky top-0 p-5 flex items-start justify-between max-w-7xl mx-auto z-20 xl:items-center">
       <motion.div
@@ -22,13 +25,18 @@ const Header = (props: Props) => {
         transition={{
           duration: 1.5,
         }}
-        className="flex flex-row items-center flex-1"
+        className="flex flex-row items-center flex-1 gap-3"
       >
-        <SocialIcon
-          url="https://twitter.com/jaketrent"
-          fgColor="gray"
-          bgColor="transparent"
-        />
+        {socialData?.map((social) => {
+          return (
+            <SocialIcon
+              key={social?._id}
+              className="cursor-pointer"
+              bgColor="white"
+              url={social?.url}
+            />
+          );
+        })}
       </motion.div>
 
       <motion.div
@@ -45,17 +53,18 @@ const Header = (props: Props) => {
         transition={{
           duration: 1.5,
         }}
-        className="flex flex-row items-center text-gray-300 cursor-pointer"
+        className="flex flex-row items-center text-gray-300 cursor-pointer gap-2"
       >
         <SocialIcon
-          className="pointer"
           network="email"
-          fgColor="gray"
-          bgColor="transparent"
+          className="cursor-pointer"
+          bgColor="white"
         />
-        <p className="uppercase hidden md:inline-flex text-sm text-gray-400">
-          Get in touch
-        </p>
+        <Link href={"#contact-me"}>
+          <p className="uppercase hidden md:inline-flex text-sm text-gray-400 font-semibold tracking-[3px]">
+            Let's talk
+          </p>
+        </Link>
       </motion.div>
     </header>
   );

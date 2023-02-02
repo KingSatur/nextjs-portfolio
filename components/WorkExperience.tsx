@@ -27,7 +27,7 @@ const WorkExperience = ({ jobData }: Props) => {
       scrollbar scrollbar-track-gray-400/20 scrollbar-thumb-[#1D4ED8]"
       >
         {jobData?.map((jobData) => {
-          return <ExperienceCard job={jobData} />;
+          return <ExperienceCard key={jobData._id} job={jobData} />;
         })}
       </div>
     </motion.div>

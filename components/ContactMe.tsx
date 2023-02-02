@@ -1,8 +1,11 @@
 import React from "react";
-import { EnvelopeIcon, MapPinIcon, PhoneIcon } from "@heroicons/react/24/solid";
+import { EnvelopeIcon, PhoneIcon } from "@heroicons/react/24/solid";
 import { SubmitHandler, useForm } from "react-hook-form";
+import { ContactData } from "../typings";
 
-type Props = {};
+type Props = {
+  contactData: ContactData;
+};
 type Inputs = {
   name: string;
   email: string;
@@ -10,7 +13,7 @@ type Inputs = {
   message: string;
 };
 
-const ContactMe = (props: Props) => {
+const ContactMe = ({ contactData }: Props) => {
   const {
     register,
     handleSubmit,
@@ -39,12 +42,8 @@ const ContactMe = (props: Props) => {
 
         <div className="space-y-10">
           <div className="flex items-center space-x-5 justify-center">
-            <PhoneIcon className="text-[#1D4ED8] h-7 w-7 animate-pulse" />
-            <p className="text-2xl">+33123123213</p>
-          </div>
-          <div className="flex items-center space-x-5 justify-center">
             <EnvelopeIcon className="text-[#1D4ED8] h-7 w-7 animate-pulse" />
-            <p className="text-2xl">decoder@gmail.com</p>
+            <p className="text-2xl">{contactData?.email}</p>
           </div>
         </div>
 

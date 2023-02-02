@@ -26,14 +26,32 @@ export interface SkillData extends SanityResponse {
 
 export interface JobData extends SanityResponse {
   name: string;
-  logo: Image;
   role: string;
+  photo: Image;
   starDate: Date;
   finishDate: Date;
   keyAchievements: string[];
   techStack: SkillData[];
   isCurrentlyWorking: boolean;
   relevance: number;
+}
+
+export interface ShowCase extends SanityResponse {
+  name: string;
+  screenshot: Image;
+  facts: string[];
+  link: string;
+  relevance: number;
+}
+
+export interface ContactData extends SanityResponse {
+  email: string;
+}
+
+export interface SocialData extends SanityResponse {
+  _type: "social";
+  title: string;
+  url: string;
 }
 
 export interface HeroData extends SanityResponse {

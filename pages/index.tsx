@@ -8,15 +8,27 @@ import Projects from "../components/Projects";
 import ContactMe from "../components/ContactMe";
 import { GetServerSideProps, GetStaticProps } from "next";
 import { Paths, getData } from "../utils/fetch";
-import { AboutData, HeroData, JobData, SkillData } from "../typings";
+import {
+  AboutData,
+  ContactData,
+  HeroData,
+  JobData,
+  ShowCase,
+  SkillData,
+  SocialData,
+} from "../typings";
+import { ArrowUpCircleIcon } from "@heroicons/react/24/solid";
+
 import Link from "next/link";
-import { urlFor } from "../santiy";
 
 type Props = {
   heroData: HeroData;
   aboutData: AboutData;
   skillsData: SkillData[];
   jobData: JobData[];
+  showCases: ShowCase[];
+  contactData: ContactData;
+  socialData: SocialData[];
 };
 
 export default function Home({
@@ -24,6 +36,9 @@ export default function Home({
   aboutData,
   skillsData,
   jobData,
+  showCases,
+  socialData,
+  contactData,
 }: Props) {
   return (
     <div
@@ -31,10 +46,10 @@ export default function Home({
       snap-mandatory overflow-y-scroll overflow-x-hidden z-0 scrollbar scrollbar-track-gray-400/20 scrollbar-thumb-[#1D4ED8]"
     >
       <Head>
-        <title>Create Next App</title>
+        <title>Portfolio</title>
       </Head>
 
-      <Header />
+      <Header socialData={socialData} />
       <section id="hero" className="snap-start">
         <Hero heroData={heroData} />
       </section>
@@ -52,21 +67,17 @@ export default function Home({
       </section>
 
       <section id="projects" className="snap-center">
-        <Projects />
+        <Projects projects={showCases} />
       </section>
 
       <section id="contact-me" className="snap-center">
-        <ContactMe />
+        <ContactMe contactData={contactData} />
       </section>
 
       <Link href={"#hero"}>
         <footer className="sticky bottom-5 w-full cursor-pointer">
           <div className="flex items-center justify-center">
-            <img
-              className="h-10 w-10 rounded-full filter grayscale hover:grayscale-0 cursor-pointer"
-              src={String(urlFor(heroData?.photo))}
-              alt=""
-            />
+            <ArrowUpCircleIcon className="text-[white] h-14 w-14 animate-pulse" />
           </div>
         </footer>
       </Link>
@@ -82,9 +93,20 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
     Paths.GET_SKILL_DATA
   );
 
+  const contactData: ContactData = await getData<ContactData>(
+    Paths.GET_CONTACT_DATA
+  );
+
   const jobData: JobData[] = await getData<JobData[]>(Paths.GET_JOB_DATA);
+  const socialData: SocialData[] = await getData<SocialData[]>(
+    Paths.GET_SOCIAL_DATA
+  );
+  const showCaseData: ShowCase[] = await getData<ShowCase[]>(
+    Paths.GET_SHOW_CASE
+  );
 
   jobData.sort((a, b) => a.relevance - b.relevance);
+  showCaseData.sort((a, b) => a.relevance - b.relevance);
 
   return {
     props: {
@@ -92,6 +114,9 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
       aboutData,
       skillsData,
       jobData,
+      showCases: showCaseData,
+      contactData,
+      socialData,
     },
     revalidate: 10,
   };
@@ -105,9 +130,20 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
 //     Paths.GET_SKILL_DATA
 //   );
 
+//   const contactData: ContactData = await getData<ContactData>(
+//     Paths.GET_CONTACT_DATA
+//   );
+
 //   const jobData: JobData[] = await getData<JobData[]>(Paths.GET_JOB_DATA);
+//   const socialData: SocialData[] = await getData<SocialData[]>(
+//     Paths.GET_SOCIAL_DATA
+//   );
+//   const showCaseData: ShowCase[] = await getData<ShowCase[]>(
+//     Paths.GET_SHOW_CASE
+//   );
 
 //   jobData.sort((a, b) => a.relevance - b.relevance);
+//   showCaseData.sort((a, b) => a.relevance - b.relevance);
 
 //   return {
 //     props: {
@@ -115,6 +151,9 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
 //       aboutData,
 //       skillsData,
 //       jobData,
+//       showCases: showCaseData,
+//       contactData,
+//       socialData,
 //     },
 //   };
 // };

@@ -17,8 +17,8 @@ const Skills = ({ skillsData }: Props) => {
         Tech stack
       </h3>
       <div className="grid grid-cols-5 gap-5">
-        {skillsData?.map(({ imagePath, logo }) => {
-          return <Skill imagePath={imagePath} logo={logo} />;
+        {skillsData?.map(({ imagePath, logo, _id }) => {
+          return <Skill key={_id} imagePath={imagePath} logo={logo} />;
         })}
       </div>
     </motion.div>
