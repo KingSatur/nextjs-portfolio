@@ -30,20 +30,21 @@ const ContactMe = ({ contactData }: Props) => {
       className="h-screen flex relative flex-col text-center 
     md:text-left md:flex-row max-w-7xl px-10 justify-evenly mx-auto items-center"
     >
-      <h3 className="absolute top-24 uppercase tracking-[20px] text-gray-500 text-2xl">
+      <h3 className="absolute top-24 uppercase tracking-[20px] text-gray-500 sm:text-2xl text-1xl">
         Contact
       </h3>
 
       <div className="flex flex-col space-y-10">
-        <h4 className="text-4xl font-semibold text-center">
-          I have got just what you need.{" "}
+        <h4 className="text-2xl sm:text-2xl md:text-3xl xl:text-4xl font-semibold text-center">
           <span className="decoration-[#1D4ED8] underline">Lets talk</span>
         </h4>
 
         <div className="space-y-10">
           <div className="flex items-center space-x-5 justify-center">
             <EnvelopeIcon className="text-[#1D4ED8] h-7 w-7 animate-pulse" />
-            <p className="text-2xl">{contactData?.email}</p>
+            <p className="text-lg sm:text-1xl md:text-2xl">
+              {contactData?.email}
+            </p>
           </div>
         </div>
 
@@ -51,7 +52,7 @@ const ContactMe = ({ contactData }: Props) => {
           onSubmit={handleSubmit(onSubmit)}
           className="flex flex-col space-y-2 w-fit mx-auto"
         >
-          <div className="flex space-x-2">
+          <div className="flex sm:space-x-2 sm:flex-row flex-col space-y-2 sm:space-y-0">
             <input
               {...register("name")}
               placeholder="Name"
@@ -76,7 +77,7 @@ const ContactMe = ({ contactData }: Props) => {
             placeholder="Message"
             className="contactInput"
           ></textarea>
-          <button className="bg-[#1D4ED8] py-5 px-10 rounded-md text-white font-bold text-lg">
+          <button className="bg-[#1D4ED8] py-5 px-10 rounded-md text-white font-bold text-sm sm:text-lg">
             Submit
           </button>
         </form>

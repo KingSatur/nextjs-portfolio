@@ -11,6 +11,7 @@
 
   .contactInput {
     @apply outline-none bg-slate-400/10 rounded-sm border-b-4 px-6 py-4 text-gray-500 
-    transition-all placeholder-[#BAE6FD]/100 focus:border-[#1D4ED8] focus:text-[#F8FAFC] font-semibold;
+    transition-all placeholder-[#BAE6FD]/100 focus:border-[#1D4ED8] focus:text-[#F8FAFC] font-semibold
+    text-sm sm:text-lg;
   }
 }

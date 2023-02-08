@@ -19,7 +19,7 @@ const WorkExperience = ({ jobData }: Props) => {
         overflow-hidden flex-col text-lft 
         max-w-full px-10 justify-evenly mx-auto items-center"
     >
-      <h3 className="uppercase mt-6 tracking-[20px] text-gray-500 xl:text-2xl md:text-2xl sm:text-2xl text-1xl">
+      <h3 className="uppercase mt-6 tracking-[20px] text-gray-500 sm:text-2xl text-1xl">
         Experience
       </h3>
       <div

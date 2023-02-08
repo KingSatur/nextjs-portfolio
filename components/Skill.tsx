@@ -26,11 +26,14 @@ const Skill = (props: Props) => {
         }}
         src={props?.imagePath ? props?.imagePath : String(urlFor(props.logo))}
         className="border border-gray-500
-        object-cover w-24 h-24
+        max-[400px]:w-20 max-[400px]:h-20
+        min-[400px]:w-20 min-[400px]:h-20
+        object-cover
+        sm:w-24 sm:h-24
         md:w-32 md:h-32
-        xl:w-32 xl:h-32 filter 
+        filter 
         group-hover:grayscale 
-        transition duration-300 ease-in-out p-5"
+        transition duration-300 ease-in-out p-2 md:p-5"
       />
       <div
         className="absolute opacity-0 group-hover:opacity-80 transition durantion-300 
