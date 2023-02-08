@@ -33,6 +33,7 @@ const Header = ({ socialData }: Props) => {
               key={social?._id}
               className="cursor-pointer"
               bgColor="white"
+              target="_blank"
               url={social?.url}
             />
           );
