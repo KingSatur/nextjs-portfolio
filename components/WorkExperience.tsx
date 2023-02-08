@@ -19,11 +19,11 @@ const WorkExperience = ({ jobData }: Props) => {
         overflow-hidden flex-col text-lft 
         max-w-full px-10 justify-evenly mx-auto items-center"
     >
-      <h3 className="uppercase mt-6 tracking-[20px] text-gray-500 text-2xl">
+      <h3 className="uppercase mt-6 tracking-[20px] text-gray-500 xl:text-2xl md:text-2xl sm:text-2xl text-1xl">
         Experience
       </h3>
       <div
-        className="w-full flex space-x-5 overflow-x-scroll p-10 snap-x snap-mandatory 
+        className="w-full flex space-x-5 overflow-x-scroll md:p-10 xl:p-10 snap-x snap-mandatory 
       scrollbar scrollbar-track-gray-400/20 scrollbar-thumb-[#1D4ED8]"
       >
         {jobData?.map((jobData) => {

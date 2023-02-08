@@ -1,5 +1,4 @@
 import React from "react";
-import { motion } from "framer-motion";
 import { JobData } from "../typings";
 import { urlFor } from "../santiy";
 
@@ -13,19 +12,20 @@ const ExperienceCard = ({ job }: Props) => {
       className="flex flex-col 
     rounded-lg items-center 
     space-y-7 flex-shrink-0 
-    w-[500px] md:w-[600px] 
-    xl:w-[900px] 
+    md:w-[700px]
+    xl:w-[700px] 
+    w-[100%]
     snap-center
-    bg-[#292929] p-10 hover:opacity-100 opacity-40 cursor-pointer transition-opacity duration-200 overflow-hidden"
+    bg-[#292929] xl:p-10 md:p-10 p-7 hover:opacity-100 opacity-40 cursor-pointer transition-opacity duration-200 overflow-hidden"
     >
       <div className="px-0 md:px-10">
         <h4 className="text-4xl font-light">{job.name}</h4>
         <p className="font-bold text-2xl mt-1">{job.role}</p>
-        <div className="flex space-x-2 my-2">
+        <div className="flex gap-2 flex-wrap">
           {job?.techStack?.map((skill) => {
             return (
               <img
-                className="h-10 w-10"
+                className="md:h-10 md:w-10 xl:h-10 xl:w-10 w-7 h-7"
                 src={skill.imagePath || String(urlFor(skill.logo))}
                 alt=""
               />
@@ -45,10 +45,10 @@ const ExperienceCard = ({ job }: Props) => {
                 month: "long",
               })}
         </p>
-        <ul className="list-disc space-y-4 ml-5 text-lg max-h-68">
+        <ul className="list-disc space-y-4 md:ml-5 xl:ml-5 text-lg h-[28rem] max-h-[28rem] sm:h-96 md:h-96 xl:h-96 scrollbar-thin md:overflow-hidden xl:overflow-hidden scrollbar-track-gray-400/20 scrollbar-thumb-[#1D4ED8]">
           {job?.keyAchievements?.map((achievement, i) => {
             return (
-              <li className="text-sm" key={i}>
+              <li className="text-sm md:text-sm xl:text-sm" key={i}>
                 {achievement}
               </li>
             );

@@ -33,7 +33,7 @@ const Hero = ({ heroData }: Props) => {
           <span className="mr-3">{text}</span>
           <Cursor cursorColor="lightcyan" />
         </h1>
-        <div className="pt-5">
+        <div className="pt-5 flex flex-col sm:flex sm:flex-wrap md:block xl:block">
           <Link href="#about">
             <button className="sectionButton">About</button>
           </Link>
