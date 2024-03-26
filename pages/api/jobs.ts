@@ -4,7 +4,7 @@ import { sanityClient } from "../../santiy";
 import { JobSchema } from "../../typings";
 
 const query = groq`
-  *[_type == "job"] | order(_createdAt desc) {
+  *[_type == "job"] | order(starDate desc) {
     ...,
     techStack[]->
   }

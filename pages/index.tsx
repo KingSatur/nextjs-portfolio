@@ -75,9 +75,9 @@ export default function Home({
         <Projects projects={showCases} />
       </section> */}
 
-      <section id="contact-me" className="snap-center">
+      {/* <section id="contact-me" className="snap-center">
         <ContactMe contactData={contactData} />
-      </section>
+      </section> */}
 
       <Link href={"#hero"}>
         <footer className="sticky bottom-5 w-full cursor-pointer">
@@ -125,7 +125,7 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
       aboutData,
       certificationData,
       skillsData: [],
-      jobData: [],
+      jobData,
       showCases: [],
       contactData,
       socialData,
