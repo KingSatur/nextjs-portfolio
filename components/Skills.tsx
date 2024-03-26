@@ -1,10 +1,10 @@
 import React from "react";
 import { motion } from "framer-motion";
 import Skill from "./Skill";
-import { SkillData } from "../typings";
+import { SkillSchema } from "../typings";
 
 type Props = {
-  skillsData: SkillData[];
+  skillsData: SkillSchema[];
 };
 
 const Skills = ({ skillsData }: Props) => {

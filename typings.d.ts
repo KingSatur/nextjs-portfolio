@@ -13,30 +13,30 @@ interface Image {
   };
 }
 
-export interface AboutData extends SanityResponse {
-  background: string;
+export interface AboutSchema extends SanityResponse {
+  description: string;
   photo: Image;
 }
 
-export interface SkillData extends SanityResponse {
+export interface SkillSchema extends SanityResponse {
   name: string;
   imagePath: string;
   logo: Image;
 }
 
-export interface JobData extends SanityResponse {
+export interface JobSchema extends SanityResponse {
   name: string;
   role: string;
   photo: Image;
   starDate: Date;
   finishDate: Date;
   keyAchievements: string[];
-  techStack: SkillData[];
+  techStack: SkillSchema[];
   isCurrentlyWorking: boolean;
   relevance: number;
 }
 
-export interface ShowCase extends SanityResponse {
+export interface ShowCaseSchema extends SanityResponse {
   name: string;
   screenshot: Image;
   facts: string[];
@@ -44,17 +44,17 @@ export interface ShowCase extends SanityResponse {
   relevance: number;
 }
 
-export interface ContactData extends SanityResponse {
+export interface ContactSchema extends SanityResponse {
   email: string;
 }
 
-export interface SocialData extends SanityResponse {
+export interface SocialSchema extends SanityResponse {
   _type: "social";
   title: string;
   url: string;
 }
 
-export interface HeroData extends SanityResponse {
+export interface HeroSchema extends SanityResponse {
   _type: "hero";
   name: string;
   role: string;

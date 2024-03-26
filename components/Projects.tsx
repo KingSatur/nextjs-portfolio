@@ -1,12 +1,10 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { ShowCase } from "../typings";
-import { urlFor } from "../santiy";
-import { ArrowTopRightOnSquareIcon } from "@heroicons/react/24/solid";
+import { ShowCaseSchema } from "../typings";
 import Link from "next/link";
 
 type Props = {
-  projects: ShowCase[];
+  projects: ShowCaseSchema[];
 };
 
 const Projects = ({ projects }: Props) => {

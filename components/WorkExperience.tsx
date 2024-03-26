@@ -1,10 +1,10 @@
 import { motion } from "framer-motion";
 import React from "react";
 import ExperienceCard from "./ExperienceCard";
-import { JobData } from "../typings";
+import { JobSchema } from "../typings";
 
 type Props = {
-  jobData: JobData[];
+  jobData: JobSchema[];
 };
 
 const WorkExperience = ({ jobData }: Props) => {

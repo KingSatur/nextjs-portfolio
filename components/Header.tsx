@@ -2,10 +2,10 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import React from "react";
 import { SocialIcon } from "react-social-icons";
-import { SocialData } from "../typings";
+import { SocialSchema } from "../typings";
 
 type Props = {
-  socialData: SocialData[];
+  socialData: SocialSchema[];
 };
 
 const Header = ({ socialData }: Props) => {

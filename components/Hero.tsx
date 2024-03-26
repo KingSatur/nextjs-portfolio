@@ -2,11 +2,11 @@ import React from "react";
 import { Cursor, useTypewriter } from "react-simple-typewriter";
 import BackgroundCircles from "./BackgroundCircles";
 import Link from "next/link";
-import { HeroData } from "../typings";
+import { HeroSchema } from "../typings";
 import { urlFor } from "../santiy";
 
 type Props = {
-  heroData: HeroData;
+  heroData: HeroSchema;
 };
 
 const Hero = ({ heroData }: Props) => {

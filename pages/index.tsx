@@ -9,26 +9,26 @@ import ContactMe from "../components/ContactMe";
 import { GetServerSideProps, GetStaticProps } from "next";
 import { Paths, getData } from "../utils/fetch";
 import {
-  AboutData,
-  ContactData,
-  HeroData,
-  JobData,
-  ShowCase,
-  SkillData,
-  SocialData,
+  AboutSchema,
+  ContactSchema,
+  HeroSchema,
+  JobSchema,
+  ShowCaseSchema,
+  SkillSchema,
+  SocialSchema,
 } from "../typings";
 import { ArrowUpCircleIcon } from "@heroicons/react/24/solid";
 
 import Link from "next/link";
 
 type Props = {
-  heroData: HeroData;
-  aboutData: AboutData;
-  skillsData: SkillData[];
-  jobData: JobData[];
-  showCases: ShowCase[];
-  contactData: ContactData;
-  socialData: SocialData[];
+  heroData: HeroSchema;
+  aboutData: AboutSchema;
+  skillsData: SkillSchema[];
+  jobData: JobSchema[];
+  showCases: ShowCaseSchema[];
+  contactData: ContactSchema;
+  socialData: SocialSchema[];
 };
 
 export default function Home({
@@ -86,22 +86,24 @@ export default function Home({
 }
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
-  const heroData: HeroData = await getData<HeroData>(Paths.GET_HERO_DATA);
-  const aboutData: AboutData = await getData<AboutData>(Paths.GET_ABOUT_DATA);
+  const heroData: HeroSchema = await getData<HeroSchema>(Paths.GET_HERO_DATA);
+  const aboutData: AboutSchema = await getData<AboutSchema>(
+    Paths.GET_ABOUT_DATA
+  );
 
-  const skillsData: SkillData[] = await getData<SkillData[]>(
+  const skillsData: SkillSchema[] = await getData<SkillSchema[]>(
     Paths.GET_SKILL_DATA
   );
 
-  const contactData: ContactData = await getData<ContactData>(
+  const contactData: ContactSchema = await getData<ContactSchema>(
     Paths.GET_CONTACT_DATA
   );
 
-  const jobData: JobData[] = await getData<JobData[]>(Paths.GET_JOB_DATA);
-  const socialData: SocialData[] = await getData<SocialData[]>(
+  const jobData: JobSchema[] = await getData<JobSchema[]>(Paths.GET_JOB_DATA);
+  const socialData: SocialSchema[] = await getData<SocialSchema[]>(
     Paths.GET_SOCIAL_DATA
   );
-  const showCaseData: ShowCase[] = await getData<ShowCase[]>(
+  const showCaseData: ShowCaseSchema[] = await getData<ShowCaseSchema[]>(
     Paths.GET_SHOW_CASE
   );
 
