@@ -2,6 +2,9 @@
   "name": "portfolio",
   "version": "0.1.0",
   "private": true,
+  "author": {
+    "name": "Juan David"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -9,27 +12,28 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@sanity/vision": "^3.0.0",
     "@heroicons/react": "^2.0.14",
     "@portabletext/react": "^2.0.1",
     "@sanity/image-url": "^1.0.2",
-    "@types/node": "18.11.18",
-    "@types/react": "18.0.27",
-    "@types/react-dom": "18.0.10",
+    "@sanity/vision": "^3.35.2",
+    "babel-loader": "^9.1.2",
     "framer-motion": "^8.5.4",
-    "next": "13.1.5",
-    "next-sanity": "^4.1.2",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
+    "next": "14.1.4",
+    "next-sanity": "^8.5.0",
+    "react": "^18",
+    "react-dom": "^18",
     "react-hook-form": "^7.43.0",
     "react-simple-typewriter": "^5.0.1",
     "react-social-icons": "^5.15.0",
+    "sanity": "^3.35.2",
+    "styled-components": "6.1.8",
     "tailwind-scrollbar": "^2.1.0",
-    "typescript": "4.9.4",
-    "sanity": "^3.0.0",
-    "styled-components": "^5.2.0"
+    "typescript": "^5"
   },
   "devDependencies": {
+    "@types/node": "18.11.18",
+    "@types/react": "^18.0.1",
+    "@types/react-dom": "^18",
     "@sanity/eslint-config-studio": "^2.0.1",
     "autoprefixer": "^10.4.13",
     "postcss": "^8.4.21",

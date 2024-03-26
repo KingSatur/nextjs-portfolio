@@ -1,9 +1,9 @@
 import React from "react";
-import { JobData } from "../typings";
+import { JobSchema } from "../typings";
 import { urlFor } from "../santiy";
 
 type Props = {
-  job: JobData;
+  job: JobSchema;
 };
 
 const ExperienceCard = ({ job }: Props) => {

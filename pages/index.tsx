@@ -9,26 +9,29 @@ import ContactMe from "../components/ContactMe";
 import { GetServerSideProps, GetStaticProps } from "next";
 import { Paths, getData } from "../utils/fetch";
 import {
-  AboutData,
-  ContactData,
-  HeroData,
-  JobData,
-  ShowCase,
-  SkillData,
-  SocialData,
+  AboutSchema,
+  CertificationSchema,
+  ContactSchema,
+  HeroSchema,
+  JobSchema,
+  ShowCaseSchema,
+  SkillSchema,
+  SocialSchema,
 } from "../typings";
 import { ArrowUpCircleIcon } from "@heroicons/react/24/solid";
 
 import Link from "next/link";
+import CertificationsSection from "../components/CertificationSection";
 
 type Props = {
-  heroData: HeroData;
-  aboutData: AboutData;
-  skillsData: SkillData[];
-  jobData: JobData[];
-  showCases: ShowCase[];
-  contactData: ContactData;
-  socialData: SocialData[];
+  heroData: HeroSchema;
+  aboutData: AboutSchema;
+  skillsData: SkillSchema[];
+  jobData: JobSchema[];
+  showCases: ShowCaseSchema[];
+  contactData: ContactSchema;
+  socialData: SocialSchema[];
+  certificationData: CertificationSchema[];
 };
 
 export default function Home({
@@ -39,6 +42,7 @@ export default function Home({
   showCases,
   socialData,
   contactData,
+  certificationData,
 }: Props) {
   return (
     <div
@@ -50,6 +54,7 @@ export default function Home({
       </Head>
 
       <Header socialData={socialData} />
+
       <section id="hero" className="snap-start">
         <Hero heroData={heroData} />
       </section>
@@ -58,21 +63,21 @@ export default function Home({
         <About aboutData={aboutData} />
       </section>
 
+      <section id="certifications" className="snap-center">
+        <CertificationsSection certificationsData={certificationData} />
+      </section>
+
       <section id="experience" className="snap-center">
         <WorkExperience jobData={jobData} />
       </section>
 
-      <section id="skills" className="snap-center">
-        <Skills skillsData={skillsData} />
-      </section>
-
-      <section id="projects" className="snap-center">
+      {/* <section id="projects" className="snap-center">
         <Projects projects={showCases} />
-      </section>
+      </section> */}
 
-      <section id="contact-me" className="snap-center">
+      {/* <section id="contact-me" className="snap-center">
         <ContactMe contactData={contactData} />
-      </section>
+      </section> */}
 
       <Link href={"#hero"}>
         <footer className="sticky bottom-5 w-full cursor-pointer">
@@ -86,35 +91,42 @@ export default function Home({
 }
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
-  const heroData: HeroData = await getData<HeroData>(Paths.GET_HERO_DATA);
-  const aboutData: AboutData = await getData<AboutData>(Paths.GET_ABOUT_DATA);
-
-  const skillsData: SkillData[] = await getData<SkillData[]>(
-    Paths.GET_SKILL_DATA
+  const heroData: HeroSchema = await getData<HeroSchema>(Paths.GET_HERO_DATA);
+  const aboutData: AboutSchema = await getData<AboutSchema>(
+    Paths.GET_ABOUT_DATA
   );
 
-  const contactData: ContactData = await getData<ContactData>(
+  const certificationData: CertificationSchema[] = await getData<
+    CertificationSchema[]
+  >(Paths.GET_CERTIFICATION_DATA);
+
+  // const skillsData: SkillSchema[] = await getData<SkillSchema[]>(
+  //   Paths.GET_SKILL_DATA
+  // );
+
+  const contactData: ContactSchema = await getData<ContactSchema>(
     Paths.GET_CONTACT_DATA
   );
 
-  const jobData: JobData[] = await getData<JobData[]>(Paths.GET_JOB_DATA);
-  const socialData: SocialData[] = await getData<SocialData[]>(
+  const jobData: JobSchema[] = await getData<JobSchema[]>(Paths.GET_JOB_DATA);
+  const socialData: SocialSchema[] = await getData<SocialSchema[]>(
     Paths.GET_SOCIAL_DATA
   );
-  const showCaseData: ShowCase[] = await getData<ShowCase[]>(
-    Paths.GET_SHOW_CASE
-  );
+  // const showCaseData: ShowCaseSchema[] = await getData<ShowCaseSchema[]>(
+  //   Paths.GET_SHOW_CASE
+  // );
 
-  jobData.sort((a, b) => a.relevance - b.relevance);
-  showCaseData.sort((a, b) => a.relevance - b.relevance);
+  // jobData.sort((a, b) => a.relevance - b.relevance);
+  // showCaseData.sort((a, b) => a.relevance - b.relevance);
 
   return {
     props: {
       heroData,
       aboutData,
-      skillsData,
+      certificationData,
+      skillsData: [],
       jobData,
-      showCases: showCaseData,
+      showCases: [],
       contactData,
       socialData,
     },

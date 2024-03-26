@@ -1,11 +1,12 @@
 import React from "react";
-import { EnvelopeIcon, PhoneIcon } from "@heroicons/react/24/solid";
+import { EnvelopeIcon } from "@heroicons/react/24/solid";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { ContactData } from "../typings";
+import { ContactSchema } from "../typings";
 
 type Props = {
-  contactData: ContactData;
+  contactData: ContactSchema;
 };
+
 type Inputs = {
   name: string;
   email: string;

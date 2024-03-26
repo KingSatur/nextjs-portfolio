@@ -1,11 +1,12 @@
 export const Paths = {
-  GET_HERO_DATA: "getHero",
-  GET_ABOUT_DATA: "getAbout",
-  GET_SKILL_DATA: "getSkill",
-  GET_JOB_DATA: "getJobs",
-  GET_SHOW_CASE: "getShowCase",
-  GET_CONTACT_DATA: "getContact",
-  GET_SOCIAL_DATA: "getSocial",
+  GET_HERO_DATA: "hero",
+  GET_ABOUT_DATA: "about",
+  GET_SKILL_DATA: "skill",
+  GET_JOB_DATA: "jobs",
+  GET_SHOW_CASE: "show-case",
+  GET_CONTACT_DATA: "contact",
+  GET_SOCIAL_DATA: "social",
+  GET_CERTIFICATION_DATA: "certification",
 };
 
 export const getData = async <T>(path: string): Promise<T> => {
