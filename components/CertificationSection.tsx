@@ -21,7 +21,7 @@ export default function CertificationsSection({ certificationsData }: Props) {
         className="md:absolute sm:absolute xl:absolute top-24 uppercase tracking-[20px] 
         text-gray-500 sm:text-2xl md:text-2xl xl:text-2xl text-1xl mt-10 md:mt-0 xl:mt-0"
       >
-        Certifications
+        Achieved Certifications
       </h3>
 
       <div className="flex justify-center items-center relative lg:flex-nowrap text-center flex-wrap min-[400px]:flex-row max-[400px]:flex-col">

@@ -20,11 +20,13 @@ const Hero = ({ heroData }: Props) => {
   return (
     <div className="h-screen flex flex-col space-y-8 items-center justify-center text-center overflow-hidden">
       <BackgroundCircles />
-      <img
-        className="relative rounded-full h-36 w-36 mx-auto object-cover"
-        src={String(urlFor(heroData?.photo))}
-        alt=""
-      />
+      {heroData?.photo && (
+        <img
+          className="relative rounded-full h-36 w-36 mx-auto object-cover"
+          src={String(urlFor(heroData?.photo))}
+          alt=""
+        />
+      )}
       <div className="z-20">
         <h2 className="text-lg font-semibold uppercase text-gray-500 pb-2 tracking-[10px]">
           {heroData?.role}
@@ -37,14 +39,11 @@ const Hero = ({ heroData }: Props) => {
           <Link href="#about">
             <button className="sectionButton">About</button>
           </Link>
+          <Link href="#certifications">
+            <button className="sectionButton">Certifications</button>
+          </Link>
           <Link href="#experience">
             <button className="sectionButton">Experience</button>
-          </Link>
-          <Link href="#projects">
-            <button className="sectionButton">Projects</button>
-          </Link>
-          <Link href="#skills">
-            <button className="sectionButton">Skills</button>
           </Link>
         </div>
       </div>

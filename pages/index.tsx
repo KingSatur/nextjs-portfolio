@@ -10,6 +10,7 @@ import { GetServerSideProps, GetStaticProps } from "next";
 import { Paths, getData } from "../utils/fetch";
 import {
   AboutSchema,
+  CertificationSchema,
   ContactSchema,
   HeroSchema,
   JobSchema,
@@ -20,6 +21,7 @@ import {
 import { ArrowUpCircleIcon } from "@heroicons/react/24/solid";
 
 import Link from "next/link";
+import CertificationsSection from "../components/CertificationSection";
 
 type Props = {
   heroData: HeroSchema;
@@ -29,6 +31,7 @@ type Props = {
   showCases: ShowCaseSchema[];
   contactData: ContactSchema;
   socialData: SocialSchema[];
+  certificationData: CertificationSchema[];
 };
 
 export default function Home({
@@ -39,6 +42,7 @@ export default function Home({
   showCases,
   socialData,
   contactData,
+  certificationData,
 }: Props) {
   return (
     <div
@@ -50,6 +54,7 @@ export default function Home({
       </Head>
 
       <Header socialData={socialData} />
+
       <section id="hero" className="snap-start">
         <Hero heroData={heroData} />
       </section>
@@ -58,17 +63,17 @@ export default function Home({
         <About aboutData={aboutData} />
       </section>
 
+      <section id="certifications" className="snap-center">
+        <CertificationsSection certificationsData={certificationData} />
+      </section>
+
       <section id="experience" className="snap-center">
         <WorkExperience jobData={jobData} />
       </section>
 
-      <section id="skills" className="snap-center">
-        <Skills skillsData={skillsData} />
-      </section>
-
-      <section id="projects" className="snap-center">
+      {/* <section id="projects" className="snap-center">
         <Projects projects={showCases} />
-      </section>
+      </section> */}
 
       <section id="contact-me" className="snap-center">
         <ContactMe contactData={contactData} />
@@ -91,9 +96,13 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
     Paths.GET_ABOUT_DATA
   );
 
-  const skillsData: SkillSchema[] = await getData<SkillSchema[]>(
-    Paths.GET_SKILL_DATA
-  );
+  const certificationData: CertificationSchema[] = await getData<
+    CertificationSchema[]
+  >(Paths.GET_CERTIFICATION_DATA);
+
+  // const skillsData: SkillSchema[] = await getData<SkillSchema[]>(
+  //   Paths.GET_SKILL_DATA
+  // );
 
   const contactData: ContactSchema = await getData<ContactSchema>(
     Paths.GET_CONTACT_DATA
@@ -103,20 +112,21 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
   const socialData: SocialSchema[] = await getData<SocialSchema[]>(
     Paths.GET_SOCIAL_DATA
   );
-  const showCaseData: ShowCaseSchema[] = await getData<ShowCaseSchema[]>(
-    Paths.GET_SHOW_CASE
-  );
+  // const showCaseData: ShowCaseSchema[] = await getData<ShowCaseSchema[]>(
+  //   Paths.GET_SHOW_CASE
+  // );
 
-  jobData.sort((a, b) => a.relevance - b.relevance);
-  showCaseData.sort((a, b) => a.relevance - b.relevance);
+  // jobData.sort((a, b) => a.relevance - b.relevance);
+  // showCaseData.sort((a, b) => a.relevance - b.relevance);
 
   return {
     props: {
       heroData,
       aboutData,
-      skillsData,
-      jobData,
-      showCases: showCaseData,
+      certificationData,
+      skillsData: [],
+      jobData: [],
+      showCases: [],
       contactData,
       socialData,
     },

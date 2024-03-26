@@ -18,5 +18,15 @@ export default {
       title: 'photo',
       type: 'image',
     },
+    {
+      name: 'words',
+      title: 'words',
+      type: 'array',
+      of: [
+        {
+          type: 'string',
+        },
+      ],
+    },
   ],
 }
