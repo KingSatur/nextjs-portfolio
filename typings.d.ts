@@ -61,3 +61,10 @@ export interface HeroSchema extends SanityResponse {
   words: string[];
   photo: Image;
 }
+
+export interface CertificationSchema extends SanityResponse {
+  _type: "certification";
+  certificationTitle: string;
+  image: Image;
+  credentialUrl: string;
+}

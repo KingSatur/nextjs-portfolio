@@ -1,4 +1,5 @@
 import aboutSchema from './aboutSchema'
+import certificationSchema from './certificationSchema'
 import contactSchema from './contactSchema'
 import heroSchema from './heroSchema'
 import jobSchema from './jobSchema'
@@ -14,4 +15,5 @@ export const schemaTypes = [
   contactSchema,
   heroSchema,
   aboutSchema,
+  certificationSchema,
 ]

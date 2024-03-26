@@ -6,6 +6,7 @@ export const Paths = {
   GET_SHOW_CASE: "show-case",
   GET_CONTACT_DATA: "contact",
   GET_SOCIAL_DATA: "social",
+  GET_CERTIFICATION_DATA: "certification",
 };
 
 export const getData = async <T>(path: string): Promise<T> => {
