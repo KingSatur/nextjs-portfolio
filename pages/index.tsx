@@ -7,7 +7,6 @@ import Skills from "../components/Skills";
 import Projects from "../components/Projects";
 import ContactMe from "../components/ContactMe";
 import { GetServerSideProps, GetStaticProps } from "next";
-import { Querys, getData } from "../utils/fetch";
 import {
   AboutSchema,
   CertificationSchema,
@@ -22,7 +21,7 @@ import { ArrowUpCircleIcon } from "@heroicons/react/24/solid";
 
 import Link from "next/link";
 import CertificationsSection from "../components/CertificationSection";
-import { fetchWithSanityQuery } from "../utils/sanityFetcher";
+import { fetchWithSanityQuery, Querys } from "../utils/sanityFetcher";
 
 type Props = {
   heroData: HeroSchema;
