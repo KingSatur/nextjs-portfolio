@@ -7,7 +7,7 @@ import Skills from "../components/Skills";
 import Projects from "../components/Projects";
 import ContactMe from "../components/ContactMe";
 import { GetServerSideProps, GetStaticProps } from "next";
-import { Paths, getData } from "../utils/fetch";
+import { Querys, getData } from "../utils/fetch";
 import {
   AboutSchema,
   CertificationSchema,
@@ -22,10 +22,11 @@ import { ArrowUpCircleIcon } from "@heroicons/react/24/solid";
 
 import Link from "next/link";
 import CertificationsSection from "../components/CertificationSection";
+import { fetchWithSanityQuery } from "../utils/sanityFetcher";
 
 type Props = {
-  heroData: HeroSchema | {};
-  aboutData: AboutSchema | {};
+  heroData: HeroSchema;
+  aboutData: AboutSchema;
   skillsData: SkillSchema[];
   jobData: JobSchema[];
   showCases: ShowCaseSchema[];
@@ -52,13 +53,13 @@ export default function Home({
 
       <Header socialData={socialData} />
 
-      {/* <section id="hero" className="snap-start">
+      <section id="hero" className="snap-start">
         <Hero heroData={heroData} />
       </section>
 
       <section id="about" className="snap-center">
         <About aboutData={aboutData} />
-      </section> */}
+      </section>
 
       <section id="certifications" className="snap-center">
         <CertificationsSection certificationsData={certificationData} />
@@ -87,36 +88,40 @@ export default function Home({
   );
 }
 
-// export const getStaticProps: GetStaticProps<Props> = async () => {
-//   const heroData: HeroSchema = await getData<HeroSchema>(Paths.GET_HERO_DATA);
-//   const aboutData: AboutSchema = await getData<AboutSchema>(
-//     Paths.GET_ABOUT_DATA
-//   );
+export const getStaticProps: GetStaticProps<Props> = async () => {
+  const heroData: HeroSchema = await fetchWithSanityQuery<HeroSchema>(
+    Querys.GET_HERO_DATA_QUERY
+  );
+  const aboutData: AboutSchema = await fetchWithSanityQuery<AboutSchema>(
+    Querys.GET_ABOUT_DATA_QUERY
+  );
 
-//   const certificationData: CertificationSchema[] = await getData<
-//     CertificationSchema[]
-//   >(Paths.GET_CERTIFICATION_DATA);
+  const certificationData: CertificationSchema[] = await fetchWithSanityQuery<
+    CertificationSchema[]
+  >(Querys.GET_CERTIFICATION_DATA_QUERY);
 
-//   const contactData: ContactSchema = await getData<ContactSchema>(
-//     Paths.GET_CONTACT_DATA
-//   );
+  const contactData: ContactSchema = await fetchWithSanityQuery<ContactSchema>(
+    Querys.GET_CONTACT_DATA_QUERY
+  );
 
-//   const jobData: JobSchema[] = await getData<JobSchema[]>(Paths.GET_JOB_DATA);
-//   const socialData: SocialSchema[] = await getData<SocialSchema[]>(
-//     Paths.GET_SOCIAL_DATA
-//   );
+  const jobData: JobSchema[] = await fetchWithSanityQuery<JobSchema[]>(
+    Querys.GET_JOB_DATA_QUERY
+  );
+  const socialData: SocialSchema[] = await fetchWithSanityQuery<SocialSchema[]>(
+    Querys.GET_SOCIAL_DATA_QUERY
+  );
 
-//   return {
-//     props: {
-//       heroData,
-//       aboutData,
-//       certificationData,
-//       skillsData: [],
-//       jobData,
-//       showCases: [],
-//       contactData,
-//       socialData,
-//     },
-//     revalidate: 10,
-//   };
-// };
+  return {
+    props: {
+      heroData,
+      aboutData,
+      certificationData,
+      skillsData: [],
+      jobData,
+      showCases: [],
+      contactData,
+      socialData,
+    },
+    revalidate: 10,
+  };
+};

@@ -25,6 +25,7 @@ const ExperienceCard = ({ job }: Props) => {
           {job?.techStack?.map((skill) => {
             return (
               <img
+                key={skill._id}
                 className="md:h-10 md:w-10 xl:h-10 xl:w-10 w-7 h-7"
                 src={skill.imagePath || String(urlFor(skill.logo))}
                 alt=""
