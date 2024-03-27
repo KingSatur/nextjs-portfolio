@@ -24,8 +24,8 @@ import Link from "next/link";
 import CertificationsSection from "../components/CertificationSection";
 
 type Props = {
-  heroData: HeroSchema;
-  aboutData: AboutSchema;
+  heroData: HeroSchema | {};
+  aboutData: AboutSchema | {};
   skillsData: SkillSchema[];
   jobData: JobSchema[];
   showCases: ShowCaseSchema[];
@@ -37,12 +37,9 @@ type Props = {
 export default function Home({
   heroData,
   aboutData,
-  skillsData,
-  jobData,
-  showCases,
-  socialData,
-  contactData,
-  certificationData,
+  jobData = [],
+  socialData = [],
+  certificationData = [],
 }: Props) {
   return (
     <div
@@ -55,13 +52,13 @@ export default function Home({
 
       <Header socialData={socialData} />
 
-      <section id="hero" className="snap-start">
+      {/* <section id="hero" className="snap-start">
         <Hero heroData={heroData} />
       </section>
 
       <section id="about" className="snap-center">
         <About aboutData={aboutData} />
-      </section>
+      </section> */}
 
       <section id="certifications" className="snap-center">
         <CertificationsSection certificationsData={certificationData} />
@@ -90,82 +87,36 @@ export default function Home({
   );
 }
 
-export const getStaticProps: GetStaticProps<Props> = async () => {
-  const heroData: HeroSchema = await getData<HeroSchema>(Paths.GET_HERO_DATA);
-  const aboutData: AboutSchema = await getData<AboutSchema>(
-    Paths.GET_ABOUT_DATA
-  );
-
-  const certificationData: CertificationSchema[] = await getData<
-    CertificationSchema[]
-  >(Paths.GET_CERTIFICATION_DATA);
-
-  // const skillsData: SkillSchema[] = await getData<SkillSchema[]>(
-  //   Paths.GET_SKILL_DATA
-  // );
-
-  const contactData: ContactSchema = await getData<ContactSchema>(
-    Paths.GET_CONTACT_DATA
-  );
-
-  const jobData: JobSchema[] = await getData<JobSchema[]>(Paths.GET_JOB_DATA);
-  const socialData: SocialSchema[] = await getData<SocialSchema[]>(
-    Paths.GET_SOCIAL_DATA
-  );
-  // const showCaseData: ShowCaseSchema[] = await getData<ShowCaseSchema[]>(
-  //   Paths.GET_SHOW_CASE
-  // );
-
-  // jobData.sort((a, b) => a.relevance - b.relevance);
-  // showCaseData.sort((a, b) => a.relevance - b.relevance);
-
-  return {
-    props: {
-      heroData,
-      aboutData,
-      certificationData,
-      skillsData: [],
-      jobData,
-      showCases: [],
-      contactData,
-      socialData,
-    },
-    revalidate: 10,
-  };
-};
-
-// export const getServerSideProps: GetServerSideProps<Props> = async () => {
-//   const heroData: HeroData = await getData<HeroData>(Paths.GET_HERO_DATA);
-//   const aboutData: AboutData = await getData<AboutData>(Paths.GET_ABOUT_DATA);
-
-//   const skillsData: SkillData[] = await getData<SkillData[]>(
-//     Paths.GET_SKILL_DATA
+// export const getStaticProps: GetStaticProps<Props> = async () => {
+//   const heroData: HeroSchema = await getData<HeroSchema>(Paths.GET_HERO_DATA);
+//   const aboutData: AboutSchema = await getData<AboutSchema>(
+//     Paths.GET_ABOUT_DATA
 //   );
 
-//   const contactData: ContactData = await getData<ContactData>(
+//   const certificationData: CertificationSchema[] = await getData<
+//     CertificationSchema[]
+//   >(Paths.GET_CERTIFICATION_DATA);
+
+//   const contactData: ContactSchema = await getData<ContactSchema>(
 //     Paths.GET_CONTACT_DATA
 //   );
 
-//   const jobData: JobData[] = await getData<JobData[]>(Paths.GET_JOB_DATA);
-//   const socialData: SocialData[] = await getData<SocialData[]>(
+//   const jobData: JobSchema[] = await getData<JobSchema[]>(Paths.GET_JOB_DATA);
+//   const socialData: SocialSchema[] = await getData<SocialSchema[]>(
 //     Paths.GET_SOCIAL_DATA
 //   );
-//   const showCaseData: ShowCase[] = await getData<ShowCase[]>(
-//     Paths.GET_SHOW_CASE
-//   );
-
-//   jobData.sort((a, b) => a.relevance - b.relevance);
-//   showCaseData.sort((a, b) => a.relevance - b.relevance);
 
 //   return {
 //     props: {
 //       heroData,
 //       aboutData,
-//       skillsData,
+//       certificationData,
+//       skillsData: [],
 //       jobData,
-//       showCases: showCaseData,
+//       showCases: [],
 //       contactData,
 //       socialData,
 //     },
+//     revalidate: 10,
 //   };
 // };

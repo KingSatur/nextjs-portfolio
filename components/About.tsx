@@ -43,7 +43,7 @@ function About({ aboutData }: Props) {
           My <span className="underline decoration-[white]">background</span>
         </h4>
         <p className="text-sm sm:text-base md:text-lg xl:text-lg">
-          {aboutData.description}
+          {aboutData?.description}
         </p>
       </div>
     </motion.div>
