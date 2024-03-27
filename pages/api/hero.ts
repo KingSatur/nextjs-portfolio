@@ -14,8 +14,8 @@ export default async function handler(
   if (req.method === "GET") {
     const heroData: HeroSchema = await sanityClient.fetch(query);
 
-    res.status(200).json(heroData);
+    return res.status(200).json(heroData);
   }
 
-  res.status(405).json({ message: "Method not allowed" });
+  return res.status(405).json({ message: "Method not allowed" });
 }
