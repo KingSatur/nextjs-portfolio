@@ -46,7 +46,7 @@ const ExperienceCard = ({ job }: Props) => {
                 month: "long",
               })}
         </p>
-        <ul className="list-disc space-y-4 md:ml-5 xl:ml-5 text-lg h-[28rem] max-h-[28rem] sm:h-96 md:h-96 xl:h-96 scrollbar-thin md:overflow-hidden xl:overflow-hidden scrollbar-track-gray-400/20 scrollbar-thumb-[#1D4ED8]">
+        <ul className="list-disc space-y-4 md:ml-5 xl:ml-5 text-lg h-[28rem] max-h-[28rem] sm:h-96 md:h-96 xl:h-96 ">
           {job?.keyAchievements?.map((achievement, i) => {
             return (
               <li className="text-sm md:text-sm xl:text-sm" key={i}>
