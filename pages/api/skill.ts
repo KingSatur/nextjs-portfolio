@@ -14,8 +14,8 @@ export default async function GET(
   if (req.method === "GET") {
     const skillData: SkillSchema[] = await sanityClient.fetch(query);
 
-    res.status(200).json(skillData);
+    return res.status(200).json(skillData);
   }
 
-  res.status(405).json({ message: "Method not allowed" });
+  return res.status(405).json({ message: "Method not allowed" });
 }

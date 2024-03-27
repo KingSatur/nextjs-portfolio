@@ -17,8 +17,8 @@ export default async function handler(
   if (req.method === "GET") {
     const jobData: JobSchema[] = await sanityClient.fetch(query);
 
-    res.status(200).json(jobData);
+    return res.status(200).json(jobData);
   }
 
-  res.status(405).json({ message: "Method not allowed" });
+  return res.status(405).json({ message: "Method not allowed" });
 }

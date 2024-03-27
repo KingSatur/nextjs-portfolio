@@ -16,7 +16,7 @@ export default async function handler(
       query
     );
 
-    res.status(200).json(certificationData);
+    return res.status(200).json(certificationData);
   }
-  res.status(405).json({ message: "Method not allowed" });
+  return res.status(405).json({ message: "Method not allowed" });
 }

@@ -10,11 +10,18 @@ export const Paths = {
 };
 
 export const getData = async <T>(path: string): Promise<T> => {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/${path}`);
+  try {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/${path}`);
 
-  const data = await res.json();
+    console.log({ res });
 
-  const dataCast: T = data as T;
+    const data = await res.json();
 
-  return dataCast;
+    const dataCast: T = data as T;
+
+    return dataCast;
+  } catch (error) {
+    console.log("strange error", error);
+    return Promise.reject(error);
+  }
 };
